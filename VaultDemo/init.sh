@@ -38,7 +38,6 @@ export VAULT_TOKEN=$ROOT_TOKEN
 # Включение KV v2 с ограничением на 2 версии
 echo "Настройка KV v2 хранилища..."
 docker exec vault vault secrets enable -path=secret kv-v2
-#vault kv metadata put -mount=secret config max_versions=2
 
 # Добавление секретов
 echo "Добавление секретов..."
