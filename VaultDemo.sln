@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VaultDemo", "VaultDemo\VaultDemo.csproj", "{8612F43D-B7ED-4831-BB75-5CE36FD31901}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8612F43D-B7ED-4831-BB75-5CE36FD31901}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8612F43D-B7ED-4831-BB75-5CE36FD31901}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8612F43D-B7ED-4831-BB75-5CE36FD31901}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8612F43D-B7ED-4831-BB75-5CE36FD31901}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
