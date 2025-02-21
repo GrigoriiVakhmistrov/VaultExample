@@ -25,7 +25,7 @@ public class ContentController : ControllerBase
         }
 
         _logger.LogInformation("Secret not found in queue, reloading from vault");
-        await _vaultService.ReloadSecretsAsync("your/secret/path"); // Замените на актуальный путь
+        await _vaultService.ReloadSecretsAsync("domain.service/my-secret"); 
 
         if (Secrets.Queue.Contains(secret, StringComparer.OrdinalIgnoreCase))
         {
