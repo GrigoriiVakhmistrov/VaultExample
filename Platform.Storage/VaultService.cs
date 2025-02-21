@@ -157,4 +157,41 @@ public class VaultService
             throw;
         }
     }
+
+    public async Task ReloadSecretsAsync(string path)
+    {
+        try
+        {
+            var currentSecret = await GetSecret(path);
+            if (currentSecret?.Data?.Data != null)
+            {
+                var currentValue = currentSecret.Data.Data["value"]?.ToString();
+                if (!string.IsNullOrEmpty(currentValue))
+                {
+                    Secrets.Queue.Enqueue(currentValue);
+                }
+
+                // Загружаем предыдущую версию, если она существует
+                if (currentSecret.Data.Metadata.Version > 1)
+                {
+                    var previousSecret = await _vaultClient.V1.Secrets.KeyValue.V2
+                        .ReadSecretAsync(path, currentSecret.Data.Metadata.Version - 1);
+                    
+                    if (previousSecret?.Data?.Data != null)
+                    {
+                        var previousValue = previousSecret.Data.Data["value"]?.ToString();
+                        if (!string.IsNullOrEmpty(previousValue))
+                        {
+                            Secrets.Queue.Enqueue(previousValue);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error reloading secrets: {ex.Message}");
+            throw;
+        }
+    }
 } 
