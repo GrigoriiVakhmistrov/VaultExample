@@ -175,7 +175,7 @@ public class VaultService
                 if (currentSecret.Data.Metadata.Version > 1)
                 {
                     var previousSecret = await _vaultClient.V1.Secrets.KeyValue.V2
-                        .ReadSecretAsync(path, currentSecret.Data.Metadata.Version - 1);
+                        .ReadSecretAsync(path, currentSecret.Data.Metadata.Version - 1, mountPoint: "secret");
                     
                     if (previousSecret?.Data?.Data != null)
                     {
